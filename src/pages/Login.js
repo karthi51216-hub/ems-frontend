@@ -13,7 +13,7 @@ function Login() {
         setError('');
 
         try {
-          const response = await axios.post('https://karthiga.pythonanywhere.com/api/auth/login/', {
+          const response = await axios.post('https://karthiga.pythonanywhere.com/api/token/', {
           username,
          password,
          });
