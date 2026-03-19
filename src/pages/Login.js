@@ -13,10 +13,11 @@ function Login() {
         setError('');
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/auth/login/', {
-                username,
-                password,
-            });
+          const response = await axios.post('https://karthiga.pythonanywhere.com/api/auth/login/', {
+          username,
+         password,
+         });
+         
 
             localStorage.setItem('access_token', response.data.access);
             localStorage.setItem('refresh_token', response.data.refresh);
