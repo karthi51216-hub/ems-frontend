@@ -5,10 +5,10 @@ import Dashboard from './components/Dashboard';
 import EmployeeList from './components/EmployeeList';
 import AddEmployee from './components/AddEmployee';
 import EditEmployee from './components/EditEmployee';
-import Login from './pages/Login';
-import PrivateRoute from './components/PrivateRoute';
 import LeaveList from './components/LeaveList';
 import AddLeave from './components/AddLeave';
+import Login from './pages/Login';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
     const token = localStorage.getItem('access_token');
@@ -65,29 +65,23 @@ function App() {
                         }
                     />
 
+                    <Route
+                        path="/leaves"
+                        element={
+                            <PrivateRoute>
+                                <LeaveList />
+                            </PrivateRoute>
+                        }
+                    />
 
                     <Route
-    path="/leaves"
-    element={
-        <PrivateRoute>
-            <LeaveList />
-        </PrivateRoute>
-    }
-/>
-
-<Route
-    path="/add-leave"
-    element={
-        <PrivateRoute>
-            <AddLeave />
-        </PrivateRoute>
-    }
-/>
-
-
-
-
-
+                        path="/add-leave"
+                        element={
+                            <PrivateRoute>
+                                <AddLeave />
+                            </PrivateRoute>
+                        }
+                    />
                 </Routes>
             </div>
         </Router>

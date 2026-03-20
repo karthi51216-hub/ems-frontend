@@ -6,18 +6,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function AddEmployee() {
     const navigate = useNavigate();
 
-    const [formData, setFormData] = useState({
-        employee_id: '',
-        first_name: '',
-        last_name: '',
-        email: '',
-        phone: '',
-        salary: '',
-        date_of_joining: '',
-        department: '',
-        designation: '',
-        status: 'active',
-    });
+const [formData, setFormData] = useState({
+    employee_id: '',
+    first_name: '',
+    last_name: '',
+    email: '',
+    phone: '',
+    salary: '',
+    date_of_joining: '',
+    department: '',
+    designation: '',
+    status: 'active',
+    username: '',
+    password: '',
+});
+
     const [profilePhoto, setProfilePhoto] = useState(null);
     const [departments, setDepartments] = useState([]);
     const [designations, setDesignations] = useState([]);
@@ -144,6 +147,30 @@ function AddEmployee() {
                                 required
                             />
                         </div>
+
+                        <div className="mb-3">
+    <label className="form-label">Username</label>
+    <input
+        type="text"
+        name="username"
+        className="form-control"
+        value={formData.username}
+        onChange={handleChange}
+        required
+    />
+</div>
+
+<div className="mb-3">
+    <label className="form-label">Password</label>
+    <input
+        type="password"
+        name="password"
+        className="form-control"
+        value={formData.password}
+        onChange={handleChange}
+        required
+    />
+</div>
 
                         <div className="mb-3">
                             <label className="form-label">Phone</label>

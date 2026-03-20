@@ -1,17 +1,18 @@
+
 import { Link, useNavigate } from 'react-router-dom';
 
 function Navbar() {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        localStorage.removeItem('access_token');
-        localStorage.removeItem('refresh_token');
+        localStorage.clear();
         navigate('/login');
     };
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
+
                 <Link className="navbar-brand" to="/dashboard">
                     🏢 EMS System
                 </Link>
@@ -27,12 +28,14 @@ function Navbar() {
                         ➕ Add Employee
                     </Link>
                     <Link className="nav-link" to="/leaves">
-                       📝 Leaves
+                        📝 Leaves
                     </Link>
+
                     <button className="btn btn-danger btn-sm ms-3" onClick={handleLogout}>
                         Logout
                     </button>
                 </div>
+
             </div>
         </nav>
     );

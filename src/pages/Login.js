@@ -1,5 +1,6 @@
 
 
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import API from '../services/api';
@@ -15,10 +16,12 @@ function Login() {
         setError('');
 
         try {
-            const response = await API.post('/api/token/', {
+            const response = await API.post('/auth/login/', {
                 username,
                 password,
             });
+
+            console.log(response.data);
 
             localStorage.setItem('access_token', response.data.access);
             localStorage.setItem('refresh_token', response.data.refresh);

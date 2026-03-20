@@ -1,9 +1,10 @@
 
-
 import axios from 'axios';
 
 const API = axios.create({
-    baseURL: 'https://karthiga.pythonanywhere.com',
+    // baseURL: 'https://karthiga.pythonanywhere.com//api/',
+       baseURL : 'http://127.0.0.1:8000/api/',
+      
 });
 
 API.interceptors.request.use(
@@ -35,7 +36,8 @@ API.interceptors.response.use(
                 }
 
                 const res = await axios.post(
-                    'https://karthiga.pythonanywhere.com/api/token/refresh/',
+                    // 'https://karthiga.pythonanywhere.com//api/auth/refresh/',
+                    'http://127.0.0.1:8000/api/auth/refresh/',
                     {
                         refresh: refreshToken,
                     }
