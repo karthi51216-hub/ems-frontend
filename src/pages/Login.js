@@ -1,6 +1,8 @@
+
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import API from '../services/api';
 
 function Login() {
     const [username, setUsername] = useState('');
@@ -13,11 +15,10 @@ function Login() {
         setError('');
 
         try {
-          const response = await axios.post('https://karthiga.pythonanywhere.com/api/token/', {
-          username,
-         password,
-         });
-         
+            const response = await API.post('/api/token/', {
+                username,
+                password,
+            });
 
             localStorage.setItem('access_token', response.data.access);
             localStorage.setItem('refresh_token', response.data.refresh);
@@ -25,7 +26,7 @@ function Login() {
             navigate('/dashboard');
         } catch (err) {
             console.error('Login error:', err.response?.data || err.message);
-            setError('Invalid username or password');
+            setError(err.response?.data?.detail || 'Invalid username or password');
         }
     };
 
@@ -67,4 +68,3 @@ function Login() {
 }
 
 export default Login;
-
